@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Fun Kit Countdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* التنسيقات العامة والخلفية */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e;
+            color: #f0f0f0;
+            background-image: radial-gradient(circle at top right, rgba(147, 51, 234, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(255, 126, 0, 0.1), transparent 40%);
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        /* التنسيقات المخصصة */
+        .font-creepster {
+            font-family: 'Creepster', cursive;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 126, 0, 0.8), 0 0 20px rgba(255, 126, 0, 0.5);
+        }
+        .btn-spooky {
+            transition: all 0.3s ease;
+        }
+        .btn-spooky:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .card {
+            background-color: rgba(42, 42, 72, 0.6);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(255, 126, 0, 0.7);
+            transform: translateY(-5px);
+        }
+        .metric-box {
+            background-color: rgba(42, 42, 72, 0.8);
+            border: 2px solid #7c3aed;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* حركة الخفاش */
+        .bat {
+            position: fixed;
+            color: #111;
+            pointer-events: none;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: fly 10s linear infinite;
+        }
+        @keyframes fly {
+            0% { transform: translateX(-10vw) translateY(20vh) scale(0.8); }
+            100% { transform: translateX(110vw) translateY(calc(20vh + 10vh * sin(2 * 3.1415 * 5 * (var(--i) / 10)))) scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bat-container"></div> 
+
+    <div class="relative z-10 container mx-auto px-4 py-8 text-center">
+
+        <header class="py-12">
+            <h1 class="font-creepster text-6xl md:text-8xl lg:text-9xl text-orange-500 text-glow tracking-wider">HALLOWEEN IS COMING</h1>
+            <p class="mt-4 text-lg md:text-2xl text-purple-300 max-w-2xl mx-auto">The spookiest night of the year is almost here! Get ready for tricks, treats, and terrifyingly good fun.</p>
+        </header>
+
+        <section id="countdown-section" class="my-12">
+            <div class="max-w-4xl mx-auto p-6 md:p-8 card rounded-2xl shadow-2xl">
+                <h2 class="font-creepster text-4xl md:text-5xl text-white mb-6 tracking-wide">The Haunting Begins In...</h2>
+                <div id="countdown-timer" class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8 text-white">
+                    <div class="bg-purple-800/50 p-4 rounded-lg">
+                        <div id="days" class="text-5xl md:text-7xl font-bold">00</div>
+                        <div class="text-sm md:text-lg text-purple-300">Days</div>
+                    </div>
+                    <div class="bg-purple-800/50 p-4 rounded-lg">
+                        <div id="hours" class="text-5xl md:text-7xl font-bold">00</div>
+                        <div class="text-sm md:text-lg text-purple-300">Hours</div>
+                    </div>
+                    <div class="bg-purple-800/50 p-4 rounded-lg">
+                        <div id="minutes" class="text-5xl md:text-7xl font-bold">00</div>
+                        <div class="text-sm md:text-lg text-purple-300">Minutes</div>
+                    </div>
+                    <div class="bg-purple-800/50 p-4 rounded-lg">
+                        <div id="seconds" class="text-5xl md:text-7xl font-bold">00</div>
+                        <div class="text-sm md:text-lg text-purple-300">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="social-proof" class="my-12">
+            <div class="max-w-4xl mx-auto grid grid-cols-3 gap-3 md:gap-6 text-white font-semibold">
+                <div class="metric-box p-3 md:p-4 rounded-xl">
+                    <div id="users-online" class="text-xl md:text-3xl text-orange-400 font-bold">3,123</div>
+                    <div class="text-xs md:text-sm mt-1 text-purple-300">Users Online</div>
+                </div>
+                <div class="metric-box p-3 md:p-4 rounded-xl">
+                    <div class="text-xl md:text-3xl text-orange-400 font-bold">99%</div>
+                    <div class="text-xs md:text-sm mt-1 text-purple-300">Success Rate</div>
+                </div>
+                <div class="metric-box p-3 md:p-4 rounded-xl">
+                    <div class="text-xl md:text-3xl text-orange-400 font-bold">24/7</div>
+                    <div class="text-xs md:text-sm mt-1 text-purple-300">Available</div>
+                </div>
+            </div>
+            <p class="mt-4 text-sm text-purple-300">Join thousands of others getting ready for the ultimate trick-or-treat experience!</p>
+        </section>
+
+        <section id="cpa-offer" class="my-20 py-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-3xl shadow-2xl max-w-4xl mx-auto">
+            <div class="px-6">
+                <h2 class="font-creepster text-5xl md:text-6xl text-gray-900 mb-4 tracking-wider text-shadow-none">Unlock Ultimate Halloween Fun!</h2>
+                <p class="text-xl text-gray-800 font-semibold mb-8 max-w-2xl mx-auto">Get our EXCLUSIVE pack of printable games, spooky stories, and creepy craft ideas. Perfect for the best Halloween party ever!</p>
+                <a href="#" class="inline-block bg-gray-900 hover:bg-gray-800 text-orange-400 font-bold text-2xl py-4 px-10 rounded-full btn-spooky shadow-lg">
+                    Download Your FREE Fun Kit! 🎃
+                </a>
+            </div>
+            <p class="mt-8 text-md font-bold text-gray-900 bg-red-400/80 mx-auto w-fit px-4 py-2 rounded-lg animate-pulse">
+                ⚠️ LIMITED TIME OFFER - Claim Now Before It Expires!
+            </p>
+        </section>
+
+        <section id="fun-zone" class="my-20">
+            <h2 class="font-creepster text-5xl md:text-6xl text-white mb-10 tracking-wide">Enter The Fun Zone... If You Dare!</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="card p-8 rounded-2xl text-center flex flex-col items-center justify-center h-64">
+                    <h3 class="text-3xl font-bold mb-4">👻 Tell Me a Spooky Joke!</h3>
+                    <p id="joke-text" class="text-lg min-h-[50px]">Why don't mummies take vacations?</p>
+                    <button id="new-joke-btn" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full btn-spooky">
+                        Get New Joke
+                    </button>
+                </div>
+                <div class="card p-8 rounded-2xl text-center flex flex-col items-center justify-center h-64">
+                    <h3 class="text-3xl font-bold mb-4">🧛‍♂️ What Should I Be?</h3>
+                    <p id="costume-text" class="text-lg min-h-[50px]">A classic vampire!</p>
+                    <button id="new-costume-btn" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full btn-spooky">
+                        Find a Costume
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Countdown Timer Logic ---
+            const countdownDate = new Date("Oct 31, 2025 00:00:00").getTime();
+            const timerInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if(document.getElementById('days')) {
+                    document.getElementById('days').innerText = String(days).padStart(2, '0');
+                    document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                    document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                    document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+                }
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    if(document.getElementById('countdown-section')) {
+                        document.getElementById('countdown-section').innerHTML = '<h2 class="font-creepster text-6xl text-orange-400 text-glow">It\'s Halloween!</h2>';
+                    }
+                }
+            }, 1000);
+
+            // --- Social Proof Randomization ---
+            const usersOnlineElement = document.getElementById('users-online');
+            function updateUsersOnline() {
+                const randomUsers = Math.floor(Math.random() * (3500 - 2800 + 1) + 2800);
+                if(usersOnlineElement) usersOnlineElement.textContent = randomUsers.toLocaleString('en-US');
+            }
+            updateUsersOnline();
+            setInterval(updateUsersOnline, 5000);
+
+            // --- Spooky Jokes Logic ---
+            const jokes = ["They're afraid to unwind!", "Because he had no body to go with!", "The Franken-doodle!", "A zom-bee!", "Tomb-stones!", "With a pumpkin patch!", "I-scream!"];
+            const jokeButton = document.getElementById('new-joke-btn');
+            const jokeText = document.getElementById('joke-text');
+            const jokeQuestions = ["Why don't mummies take vacations?", "Why didn't the skeleton go to the party?", "What do you call a monster's dog?", "What does a zombie call a bee?", "What do you find on a haunted beach?", "How do you fix a broken Jack-o'-lantern?", "What is a ghost's favorite dessert?"];
+
+            if (jokeButton) {
+                jokeButton.addEventListener('click', () => {
+                    const randomIndex = Math.floor(Math.random() * jokes.length);
+                    jokeText.textContent = jokeQuestions[randomIndex];
+                    setTimeout(() => {
+                        jokeText.textContent = jokes[randomIndex];
+                    }, 1500);
+                });
+            }
+
+            // --- Costume Idea Logic ---
+            const costumes = ["A mischievous black cat", "A friendly ghost", "A powerful wizard", "A glowing jack-o'-lantern", "A spooky scarecrow", "A funny alien from Mars", "A brave superhero", "A silly circus clown", "A mysterious mad scientist"];
+            const costumeButton = document.getElementById('new-costume-btn');
+            const costumeText = document.getElementById('costume-text');
+
+            if (costumeButton) {
+                costumeButton.addEventListener('click', () => {
+                    const randomIndex = Math.floor(Math.random() * costumes.length);
+                    costumeText.textContent = costumes[randomIndex] + "!";
+                });
+            }
+
+            // --- Bat Animation Logic ---
+            const batContainer = document.getElementById('bat-container');
+            const numberOfBats = 10;
+            if (batContainer) {
+                for (let i = 0; i < numberOfBats; i++) {
+                    const bat = document.createElement('div');
+                    bat.classList.add('bat');
+                    bat.textContent = '🦇';
+                    bat.style.left = `${Math.random() * 100}vw`;
+                    bat.style.top = `${Math.random() * 100}vh`;
+                    bat.style.animationDuration = `${Math.random() * 5 + 8}s`;
+                    bat.style.animationDelay = `${Math.random() * 5}s`;
+                    batContainer.appendChild(bat);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
